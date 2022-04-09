@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     public function destroy($id)
     {
-        
+        $data = auth()->user()->id;
     }
 
     /**
