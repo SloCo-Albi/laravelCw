@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware(['a
 Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edit');
 
 Route::patch('/posts/edit/{id}', [PostController::class, 'update'])->name('posts.update');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
