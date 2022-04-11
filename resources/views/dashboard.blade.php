@@ -1,3 +1,4 @@
+<title>Dashboard</title>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -12,7 +13,9 @@
                     <h1>My Posts</h1>
                     <ul style="list-style-type:'-'">
                     @foreach($user_posts as $post)
-                        <li><a href="{{route('posts.show',['id'=>$post->id])}}">{{$post->post_title}}</a></li>
+                    <form>
+                        <li>{{$post->post_title}}</li><button style="color:white; padding: 10px 24px; font-size: 13px; background-color:#4CAF50; border-radius: 4px;" type="submit" formaction="{{route('posts.show',['id'=>$post->id])}}">Read More</button>
+                    </form>
                     @endforeach
                     </ul>
                 </div>

@@ -21,6 +21,10 @@ class PostController extends Controller
         return view('posts', ['posts'=>$posts]);
     }
 
+    public function random(){
+        $random = Post::inRandomOrder()->get();
+        return view('home', ['post'=>$random]);
+    }
     /**
      * Show the form for creating a new resource.
      *
