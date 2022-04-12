@@ -21,8 +21,9 @@ class PostController extends Controller
         return view('posts', ['posts'=>$posts]);
     }
 
-    public function random(){
-        $random = Post::inRandomOrder()->get();
+    public function random()
+    {
+        $random = Post::inRandomOrder()->first();
         return view('home', ['post'=>$random]);
     }
     /**

@@ -16,13 +16,9 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PostController::class, 'random'])->name('posts.random');
 
-Route::get('/home',function(){
-    return view('home');
-})->name('home');
+Route::get('/home',[PostController::class, 'random'])->name('home');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
