@@ -19,6 +19,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (Auth::user()->admin === 1)
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Admin Area') }}
+                    </x-nav-link>
+                    @endif
                     @endauth
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
@@ -86,6 +91,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if (Auth::user()->admin === 1)
+            <x-responsive-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                    {{ __('Admin Area') }}
+            </x-responsive-nav-link>
+            @endif
             @endauth
             <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                 {{ __('Posts') }}
