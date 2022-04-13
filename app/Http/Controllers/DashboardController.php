@@ -18,7 +18,8 @@ class DashboardController extends Controller
     {
         $data = auth()->user()->id;
         $user_posts = DB::table('posts')->where('user_id', $data)->get();
-        return view('dashboard',['user_posts'=>$user_posts]);
+        $user_comments = DB::table('comments')->where('user_id', $data)->get();
+        return view('dashboard',['user_posts'=>$user_posts, 'user_comments'=>$user_comments]);
     }
 
     public function destroy($id)
