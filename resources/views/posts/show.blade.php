@@ -58,7 +58,9 @@
                                         <p style="color:red"><i>Posted by @{{ comment.user.name }}</i></p>
                                         <p> @{{ comment.comment_text }} </p>
                                         <div v-if="{{Auth::user()->id}} === comment.user.id">
+                                        <form>
                                         <button style="color:white; padding: 10px 24px; font-size: 16px; background-color:#4CAF50; border-radius: 4px;">Edit Comment</button>
+                                        </form>
                                         </div>
                                         <hr style="border-top: 1px dashed black;">
                                     </template>

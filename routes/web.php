@@ -34,6 +34,8 @@ Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edi
 
 Route::patch('/posts/edit/{id}', [PostController::class, 'update'])->name('posts.update');
 
+Route::get('/posts/comment/edit/{id}', [CommentController::class, 'update'])->name('comment.edit');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
