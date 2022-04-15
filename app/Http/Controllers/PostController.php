@@ -33,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $cards = MagicCard::all();
+        $cards = MagicCard::doesntHave('post')->get();
         return view('posts.create',['cards'=>$cards]);
     }
 

@@ -13,7 +13,7 @@
                     <br>
                     {!! $post->post_text !!}
                 </div>
-                @if (Auth::user()->id === $post->user->id)
+                @if (Auth::user()->id === $post->user->id || Auth::user()->admin === 1)
                 <form>
                 <button style="color:white; padding: 10px 24px; font-size: 13px; background-color:#008CBA; border-radius: 4px;" type="submit" formaction="{{route('posts.edit',['id'=>$post->id])}}">Edit Post</button>
                 </form>
