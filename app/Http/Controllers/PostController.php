@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(8);
         return view('posts', ['posts'=>$posts]);
     }
 
@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         $user_id = auth()->user()->id;
         $validatedData = $request->validate([
-            'post_title' => 'required',
+            'post_title' => 'required | max:255',
             'post_text' => 'required',
             'card_name' => 'required'
         ]);
