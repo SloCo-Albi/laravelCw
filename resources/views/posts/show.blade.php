@@ -13,6 +13,7 @@
                     <br>
                     {!! $post->post_text !!}
                 </div>
+                @auth
                 @if (Auth::user()->id === $post->user->id || Auth::user()->admin === 1)
                 <form>
                 <button style="color:white; padding: 10px 24px; font-size: 13px; background-color:#008CBA; border-radius: 4px;" type="submit" formaction="{{route('posts.edit',['id'=>$post->id])}}">Edit Post</button>
@@ -24,6 +25,7 @@
                 <button style="color:white; padding: 10px 24px; font-size: 13px; background-color:#f44336; border-radius: 4px;" type="submit" formaction="{{route('posts.destroy',['id'=>$post->id])}}">Delete Post</button>
                 </form>
                 @endif
+                @endauth
             </div>
         </div>
     </div>
@@ -57,11 +59,13 @@
                                     <template  v-for="comment in comments"> 
                                         <p style="color:red"><i>Posted by @{{ comment.user.name }}</i></p>
                                         <p> @{{ comment.comment_text }} </p>
+                                        @auth
                                         <div v-if="{{Auth::user()->id}} === comment.user.id">
                                         <form>
                                         <button style="color:white; padding: 10px 24px; font-size: 16px; background-color:#4CAF50; border-radius: 4px;">Edit Comment</button>
                                         </form>
                                         </div>
+                                        @endauth
                                         <hr style="border-top: 1px dashed black;">
                                     </template>
                                 </div>
@@ -88,7 +92,9 @@
                     axios.post("{{route('api.post.new',['id'=>$post->id])}}",{
                         comment_text:this.newCommentText,
                         post_id:{{$post->id}},
+                        @auth
                         user_id:{{Auth::user()->id}},
+                        @endauth
                     }).then(response=>{
                         this.comments.push(response.data);
                         this.newCommentText="";
